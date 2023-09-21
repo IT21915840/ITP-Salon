@@ -25,7 +25,7 @@ function App() {
               <Route path="/makeup" element={<Products />} />
               <Route path="/nails" element={<Products />} />
               <Route path="/facials" element={<Products />} />
-              <Route path="/inventory" element={<Inventory />} />
+              <Route path="/Inventory" element={<Inventory />} />
             </Route>
           </Routes>
         </ThemeProvider>

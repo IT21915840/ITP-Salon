@@ -130,5 +130,3 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
 };
 
 export default Navbar;
-
-//test2

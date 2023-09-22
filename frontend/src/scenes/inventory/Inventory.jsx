@@ -10,6 +10,7 @@ import {
   Rating,
   useTheme,
   useMediaQuery,
+  Fab,
 } from "@mui/material";
 import Header from "components/Header";
 import { useGetProductsQuery } from "state/api";
@@ -86,52 +87,68 @@ const InventoryManagement = () => {
   const [openModal, setOpenModel] = useState(false);
 
   return (
-    <Box m="1.5rem 2.5rem">
-      <AddEditModel open={openModal} setOpen={setOpenModel}/>
-      <Header title="Inventory" subtitle="Inventory management" />
-      {data || !isLoading ? (
-        <Box
-          mt="20px"
-          display="grid"
-          gridTemplateColumns="repeat(3, minmax(0, 1fr))"
-          justifyContent="space-between"
-          rowGap="20px"
-          columnGap="1.33%"
-          sx={{
-            "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-          }}
-        >
-          {data?.map(
-            ({
-              _id,
-              name,
-              description,
-              price,
-              rating,
-              category,
-              supply,
-              stat,
-            }) => (
-              <Product
-                key={_id}
-                _id={_id}
-                name={name}
-                description={description}
-                price={price}
-                rating={rating}
-                category={category}
-                supply={supply}
-                stat={stat}
-                openModel={openModal}
-                setOpenModel={setOpenModel}
-              />
-            )
-          )}
+    <>
+        <Box m="1.5rem 2.5rem">
+        <AddEditModel open={openModal} setOpen={setOpenModel}/>
+        <Header title="Inventory" subtitle="Inventory management" />
+        {data || !isLoading ? (
+            <Box
+            mt="20px"
+            display="grid"
+            gridTemplateColumns="repeat(3, minmax(0, 1fr))"
+            justifyContent="space-between"
+            rowGap="20px"
+            columnGap="1.33%"
+            sx={{
+                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+            }}
+            >
+            {data?.map(
+                ({
+                _id,
+                name,
+                description,
+                price,
+                rating,
+                category,
+                supply,
+                stat,
+                }) => (
+                <Product
+                    key={_id}
+                    _id={_id}
+                    name={name}
+                    description={description}
+                    price={price}
+                    rating={rating}
+                    category={category}
+                    supply={supply}
+                    stat={stat}
+                    openModel={openModal}
+                    setOpenModel={setOpenModel}
+                />
+                )
+            )}
+            </Box>
+            
+        ) : (
+            <>Loading...</>
+        )}
+        <Fab variant="extended" sx={{
+            position:'sticky',
+            bottom:'10px',
+            width:'100%',
+            right:'0',  
+            marginTop:'30px',
+            marginBottom:'30px'
+        }}
+            onClick={() => setOpenModel(!openModal)}
+        > 
+           + Add New Inventory
+        </Fab>
         </Box>
-      ) : (
-        <>Loading...</>
-      )}
-    </Box>
+        
+    </>
   );
 };
 

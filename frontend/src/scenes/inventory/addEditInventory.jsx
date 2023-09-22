@@ -3,8 +3,9 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { FormControl, FormHelperText, Input, InputLabel, Paper } from '@mui/material';
+import { FormControl, FormHelperText, Grid, Input, InputLabel, Paper, TextField } from '@mui/material';
 import { Form } from 'react-router-dom';
+import sampleImage from '../../assets/placeholder.webp';
 
 const style = {
   position: 'absolute',
@@ -33,34 +34,56 @@ export const AddEditModel = (props) => {
       >
         <Paper sx={style}>
             <form>
-                <FormControl>
-                    <InputLabel htmlFor="my-input">Email address</InputLabel>
-                    <Input id="my-input" aria-describedby="my-helper-text" />
-                    <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-                </FormControl>
-                <FormControl>
-                    <InputLabel htmlFor="my-input">Email address</InputLabel>
-                    <Input id="my-input" aria-describedby="my-helper-text" />
-                    <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-                </FormControl>
-                <FormControl>
-                    <InputLabel htmlFor="my-input">Email address</InputLabel>
-                    <Input id="my-input" aria-describedby="my-helper-text" />
-                    <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-                </FormControl>
-                <Button
-                variant="primary"
-                size="small" 
-                >
-                Save
-                </Button>
-                <Button
-                variant="primary"
-                size="small" 
-                onClick={() => setOpen(!open)}
-                >
-                Cancle
-                </Button>
+                <Typography variant='h4' >Add / Edit Inventory</Typography>
+                <img src={sampleImage}  style={{width:'330px',marginTop:'10px',marginBottom:'5px'}}/> 
+                <Box sx={{ width: '100%' }}>
+                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                        <Grid item xs={12}>
+                            <FormControl  xs={12}>
+                                <InputLabel htmlFor="my-input">Name</InputLabel>
+                                <Input id="my-input" aria-describedby="my-helper-text" />
+                                <FormHelperText id="my-helper-text">Enter inventory name.</FormHelperText>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12}> 
+                            <FormControl>
+                                <InputLabel htmlFor="my-input">Quentity</InputLabel>
+                                <Input id="my-input" aria-describedby="my-helper-text" />
+                                <FormHelperText id="my-helper-text">Enter inventory quentity.</FormHelperText>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FormControl> 
+                                <TextField
+                                    id="standard-textarea"
+                                    label="Description"
+                                    placeholder="Description"
+                                    multiline
+                                    variant="standard"
+                                />
+                                <FormHelperText id="my-helper-text">Enter inventory description.</FormHelperText>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Button
+                                variant="primary"
+                                size="small" 
+                            >
+                                 Save
+                            </Button>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Button
+                                variant="primary"
+                                size="small" 
+                                onClick={() => setOpen(!open)}
+                            >
+                                 Cancle
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Box>
+                
             </form>
         </Paper>
       </Modal>

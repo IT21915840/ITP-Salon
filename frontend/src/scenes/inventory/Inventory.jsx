@@ -14,6 +14,7 @@ import {
 import Header from "components/Header";
 import { useGetProductsQuery } from "state/api";
 import sampleImage from '../../assets/placeholder.webp';
+import AddEditModel from "./addEditInventory";
 
 const Product = ({
   _id,
@@ -24,6 +25,8 @@ const Product = ({
   category,
   supply,
   stat,
+  openModal,
+  setOpenModel
 }) => {
   const theme = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -58,7 +61,7 @@ const Product = ({
         <Button
           variant="primary"
           size="small"
-          onClick={() => setIsExpanded(!isExpanded)}
+          onClick={() => setOpenModel(!openModal)}
         >
           Update
         </Button>
@@ -80,9 +83,11 @@ const Product = ({
 const InventoryManagement = () => {
   const { data, isLoading } = useGetProductsQuery();
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
+  const [openModal, setOpenModel] = useState(false);
 
   return (
     <Box m="1.5rem 2.5rem">
+      <AddEditModel open={openModal} setOpen={setOpenModel}/>
       <Header title="Inventory" subtitle="Inventory management" />
       {data || !isLoading ? (
         <Box
@@ -117,6 +122,8 @@ const InventoryManagement = () => {
                 category={category}
                 supply={supply}
                 stat={stat}
+                openModel={openModal}
+                setOpenModel={setOpenModel}
               />
             )
           )}

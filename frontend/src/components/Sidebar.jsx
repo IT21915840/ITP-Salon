@@ -21,6 +21,7 @@ import {
   Groups2Outlined,
   ReceiptLongOutlined,
   PublicOutlined,
+  InventoryOutlined
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -70,7 +71,7 @@ const navItems = [
   },
   {
     text: "Inventory",
-    icon: null,
+    icon: <InventoryOutlined/>,
   },
   {
     text: "Reviews & Ratings",
